@@ -21,8 +21,6 @@
 
 SUBDIRS = src
 
-INCLUDES = $(top_srcdir)/include/
-
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xdamage.pc
 
