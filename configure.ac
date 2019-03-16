@@ -30,7 +30,7 @@ AC_PREREQ([2.60])
 # protocol, so Xdamage version l.n.m corresponds to protocol version l.n
 #
 AC_INIT(libXdamage, [1.1.5],
-	[https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], [libXdamage])
+	[https://gitlab.freedesktop.org/xorg/lib/libXdamage/issues], [libXdamage])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 
