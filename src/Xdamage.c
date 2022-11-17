@@ -124,7 +124,7 @@ XDamageExtAddDisplay (XDamageExtInfo	*extinfo,
  * extension object. (Replaces XextRemoveDisplay.)
  */
 static int
-XDamageExtRemoveDisplay (XDamageExtInfo *extinfo, Display *dpy)
+XDamageExtRemoveDisplay (XDamageExtInfo *extinfo, const Display *dpy)
 {
     XDamageExtDisplayInfo *info, *prev;
 
@@ -165,7 +165,7 @@ XDamageExtRemoveDisplay (XDamageExtInfo *extinfo, Display *dpy)
  */
 static XDamageExtDisplayInfo *
 XDamageExtFindDisplay (XDamageExtInfo *extinfo,
-		      Display	    *dpy)
+		       const Display  *dpy)
 {
     XDamageExtDisplayInfo *info;
 
