@@ -25,6 +25,7 @@
 #include <config.h>
 #endif
 #include "xdamageint.h"
+#include <X11/Xfuncproto.h>
 
 XDamageExtInfo XDamageExtensionInfo;
 
@@ -204,7 +205,7 @@ XDamageFindDisplay (Display *dpy)
 }
 
 static int
-XDamageCloseDisplay (Display *dpy, XExtCodes *codes)
+XDamageCloseDisplay (Display *dpy, _X_UNUSED XExtCodes *codes)
 {
     return XDamageExtRemoveDisplay (&XDamageExtensionInfo, dpy);
 }

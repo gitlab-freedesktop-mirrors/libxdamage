@@ -52,7 +52,7 @@ DAMAGEEXT_VERSION=[`echo $VERSION | sed 's/^\([0-9][0-9]*\.[0-9][0-9]*\).*$/\1/'
 AC_SUBST(DAMAGEEXT_VERSION)
 
 # Obtain compiler/linker options for dependencies
-PKG_CHECK_MODULES(XDAMAGE, [damageproto >= $DAMAGEEXT_VERSION] xfixes fixesproto xextproto x11)
+PKG_CHECK_MODULES(XDAMAGE, [damageproto >= $DAMAGEEXT_VERSION xfixes fixesproto xextproto x11 xproto >= 7.0.22])
 
 AC_CONFIG_FILES([Makefile
 		src/Makefile
