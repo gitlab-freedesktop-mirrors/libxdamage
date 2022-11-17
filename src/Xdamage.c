@@ -51,7 +51,7 @@ XDamageExtAddDisplay (XDamageExtInfo	*extinfo,
 {
     XDamageExtDisplayInfo    *info;
 
-    info = (XDamageExtDisplayInfo *) Xmalloc (sizeof (XDamageExtDisplayInfo));
+    info = Xmalloc (sizeof (XDamageExtDisplayInfo));
     if (!info) return NULL;
     info->display = dpy;
 
@@ -155,7 +155,7 @@ XDamageExtRemoveDisplay (XDamageExtInfo *extinfo, const Display *dpy)
     if (info == extinfo->cur) extinfo->cur = NULL;  /* flush cache */
     _XUnlockMutex(_Xglobal_lock);
 
-    Xfree ((char *) info);
+    Xfree (info);
     return 1;
 }
 
