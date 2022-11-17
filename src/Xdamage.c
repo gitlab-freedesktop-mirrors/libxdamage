@@ -49,7 +49,6 @@ XDamageExtAddDisplay (XDamageExtInfo	*extinfo,
                       const char	*ext_name)
 {
     XDamageExtDisplayInfo    *info;
-    int			    ev;
 
     info = (XDamageExtDisplayInfo *) Xmalloc (sizeof (XDamageExtDisplayInfo));
     if (!info) return NULL;
@@ -66,7 +65,7 @@ XDamageExtAddDisplay (XDamageExtInfo	*extinfo,
 	xDamageQueryVersionReq	*req;
         XESetCloseDisplay (dpy, info->codes->extension,
                            XDamageCloseDisplay);
-	for (ev = info->codes->first_event;
+	for (int ev = info->codes->first_event;
 	     ev < info->codes->first_event + XDamageNumberEvents;
 	     ev++)
 	{
