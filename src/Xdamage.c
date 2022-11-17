@@ -262,10 +262,10 @@ XDamageEventToWire(Display *dpy, XEvent *event, xEvent *wire)
 	awire = (xDamageNotifyEvent *) wire;
 	aevent = (XDamageNotifyEvent *) event;
 	awire->type = (CARD8) aevent->type | (aevent->send_event ? 0x80 : 0);
-	awire->drawable = aevent->drawable;
-	awire->damage = aevent->damage;
+	awire->drawable = (CARD32) aevent->drawable;
+	awire->damage = (CARD32) aevent->damage;
 	awire->level = (CARD8) aevent->level | (aevent->more ? DamageNotifyMore : 0);
-	awire->timestamp = aevent->timestamp;
+	awire->timestamp = (CARD32) aevent->timestamp;
 	awire->area.x = aevent->area.x;
 	awire->area.y = aevent->area.y;
 	awire->area.width = aevent->area.width;
@@ -323,8 +323,9 @@ XDamageCreate (Display *dpy, Drawable drawable, int level)
     GetReq (DamageCreate, req);
     req->reqType = (CARD8) info->codes->major_opcode;
     req->damageReqType = X_DamageCreate;
-    req->damage = damage = XAllocID (dpy);
-    req->drawable = drawable;
+    damage = XAllocID (dpy);
+    req->damage = (CARD32) damage;
+    req->drawable = (CARD32) drawable;
     req->level = (CARD8) level;
     UnlockDisplay (dpy);
     SyncHandle ();
@@ -342,7 +343,7 @@ XDamageDestroy (Display *dpy, Damage damage)
     GetReq (DamageDestroy, req);
     req->reqType = (CARD8) info->codes->major_opcode;
     req->damageReqType = X_DamageDestroy;
-    req->damage = damage;
+    req->damage = (CARD32) damage;
     UnlockDisplay (dpy);
     SyncHandle ();
 }
@@ -359,9 +360,9 @@ XDamageSubtract (Display *dpy, Damage damage,
     GetReq (DamageSubtract, req);
     req->reqType = (CARD8) info->codes->major_opcode;
     req->damageReqType = X_DamageSubtract;
-    req->damage = damage;
-    req->repair = repair;
-    req->parts = parts;
+    req->damage = (CARD32) damage;
+    req->repair = (CARD32) repair;
+    req->parts = (CARD32) parts;
     UnlockDisplay (dpy);
     SyncHandle ();
 }
@@ -377,8 +378,8 @@ XDamageAdd (Display *dpy, Drawable drawable, XserverRegion region)
     GetReq (DamageAdd, req);
     req->reqType = (CARD8) info->codes->major_opcode;
     req->damageReqType = X_DamageAdd;
-    req->drawable = drawable;
-    req->region = region;
+    req->drawable = (CARD32) drawable;
+    req->region = (CARD32) region;
 
     UnlockDisplay (dpy);
     SyncHandle ();
