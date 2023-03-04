@@ -34,12 +34,13 @@ AC_INIT(libXdamage, [1.1.6],
         [libXdamage])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 
 # Initialize Automake
 AM_INIT_AUTOMAKE([foreign dist-xz])
 
 # Initialize libtool
-AC_PROG_LIBTOOL
+LT_INIT
 
 # Require X.Org macros 1.8 or later
 m4_ifndef([XORG_MACROS_VERSION],
